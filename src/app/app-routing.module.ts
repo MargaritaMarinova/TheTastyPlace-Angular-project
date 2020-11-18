@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserRegisterComponent } from './users/user-register/user-register.component';
@@ -8,6 +9,7 @@ import { UserRegisterComponent } from './users/user-register/user-register.compo
 const appRoutes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'recipes', component: RecipesComponent},
+  {path: 'create', component: RecipeCreateComponent},
   {path: 'register', component: UserRegisterComponent},
   {path: 'login', component: UserLoginComponent}
 ];
