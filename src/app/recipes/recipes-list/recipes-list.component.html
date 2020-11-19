@@ -1,1 +1,15 @@
-<p>recipes-list works!</p>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="list-group-item clearfix recipe-card" *ngFor="let recipe of recipes">
+            <div class="recipe-short-info">
+                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                <p class="list-group-item-text">Описание: {{recipe.description}}</p>
+                <p class="list-group-item-text">Категория: {{recipe.category}}</p>
+            </div>
+            <span class="recipe-image-and-details">
+                <img src="{{recipe.imageUrl}}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 70px">
+                <a href="/details" class="recipe-details-link">See details</a>
+            </span>
+        </div>
+    </div>
+</div>
