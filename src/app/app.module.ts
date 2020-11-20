@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserRegisterComponent } from './users/user-register/user-register.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { DropdownDirective } from './recipes/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
     UsersComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
