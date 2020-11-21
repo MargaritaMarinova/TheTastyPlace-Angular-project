@@ -1,9 +1,9 @@
 <section class="recipe-container">
-    <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/k%2FPhoto%2FRecipes%2F2020-02-Kielbasa-and-Cabbage-Skillet%2Fkielbasa2"
-        alt="">
+    <img [src]="recipe.imageUrl"
+        alt="{{recipe.name}}">
     <div class="recipe-details-info">
-        <h2>RECIPE TITLE</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae accusantium magni ducimus hic deserunt modi saepe minima odit quia illum dignissimos, error esse vitae! Sequi totam corporis accusantium explicabo.</p>
+        <h2>{{recipe.name}}</h2>
+        <p>{{recipe.description}}</p>
         
         <ul>
             <label>Продукти:</label>

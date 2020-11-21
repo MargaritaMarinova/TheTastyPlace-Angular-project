@@ -1,0 +1,15 @@
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: 20px;
+}
+
+.recipe-template {
+    width: 45%;
+    margin-left: 10px;
+}
+
+.recipe-template >img {
+    width: 100%;
+}
