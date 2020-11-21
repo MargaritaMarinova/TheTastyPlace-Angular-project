@@ -2,7 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { RecipeCreateComponent } from "./recipes/recipe-create/recipe-create.component";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
-import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
+import { RecipesListComponent } from "./recipes/recipes-list/recipes-list.component";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { UserLoginComponent } from "./users/user-login/user-login.component";
 import { UserRegisterComponent } from "./users/user-register/user-register.component";
@@ -12,10 +13,10 @@ const appRoutes: Routes = [
   {
     path: "recipes",
     component: RecipesComponent,
-    children: 
-    [
-      {path: "", component: RecipesListComponent},
-      { path: ":id", component: RecipeDetailsComponent }
+    children: [
+      { path: "", component: RecipesListComponent },
+      { path: ":id", component: RecipeDetailsComponent },
+      { path: ":id/edit", component: RecipeEditComponent },
     ],
   },
   { path: "create", component: RecipeCreateComponent },
