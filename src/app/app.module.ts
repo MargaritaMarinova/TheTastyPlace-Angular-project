@@ -15,6 +15,7 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserRegisterComponent } from './users/user-register/user-register.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { DropdownDirective } from './recipes/dropdown.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { DropdownDirective } from './recipes/dropdown.directive';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
