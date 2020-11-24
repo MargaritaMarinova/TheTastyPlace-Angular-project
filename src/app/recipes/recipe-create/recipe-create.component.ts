@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipes.service';
 
 
 @Component({
@@ -10,14 +13,27 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class RecipeCreateComponent implements OnInit {
   recipeForm: FormGroup;
 
-  constructor() { }
+  constructor(private recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   onSubmit() {
-    console.log(this.recipeForm)
+    const newRecipe = new Recipe (
+      this.recipeForm.value['name'],
+      this.recipeForm.value['description'],
+      this.recipeForm.value['imageUrl'],
+      this.recipeForm.value['category']
+    )
+    this.recipeService.addRecipe(newRecipe);
+    this.onCancel();
+  }
+
+  onCancel(){
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {

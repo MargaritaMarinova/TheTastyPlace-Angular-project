@@ -16,6 +16,7 @@ import { UserRegisterComponent } from './users/user-register/user-register.compo
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { DropdownDirective } from './recipes/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeService } from './recipes/recipes.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
