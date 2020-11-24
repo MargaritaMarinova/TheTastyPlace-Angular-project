@@ -34,4 +34,8 @@ export class RecipesListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe;
   }
+
+  onNewRecipe() {
+    this.router.navigate(['create'], {relativeTo: this.route});
+  }
 }
