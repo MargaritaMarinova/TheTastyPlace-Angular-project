@@ -28,7 +28,7 @@ export class RecipeCreateComponent implements OnInit {
       this.recipeForm.value['imageUrl'],
       this.recipeForm.value['category']
     )
-    this.recipeService.addRecipe(newRecipe);
+    this.recipeService.saveRecipe(newRecipe);
     this.onCancel();
   }
 

@@ -17,6 +17,7 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { DropdownDirective } from './recipes/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipes.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RecipeService } from './recipes/recipes.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]
