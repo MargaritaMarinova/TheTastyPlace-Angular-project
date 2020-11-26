@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
-import {map} from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class RecipeService {
@@ -31,50 +31,56 @@ export class RecipeService {
 
   loadedRecipes: Recipe[] = [];
 
-  constructor(private http: HttpClient,
-    private router: Router){}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  saveRecipe(recipeData: {name: string, imageUrl: string, description: string, category: string}){
-    this.http.post('https://thetastyplace-6a02c.firebaseio.com/recipes.json', recipeData)
-    .subscribe(
-      (response)=> {
-        console.log(response)
-      }
-    )
+  saveRecipe(recipeData: {
+    name: string;
+    imageUrl: string;
+    description: string;
+    category: string;
+  }) {
+    this.http
+      .post(
+        "https://thetastyplace-6a02c.firebaseio.com/recipes.json",
+        recipeData
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
-
-  
 
   getRecipes() {
     return this.http
-    .get('https://thetastyplace-6a02c.firebaseio.com/recipes.json')
-    .pipe(map(resData => {
-      const fetchedRecipes: Recipe[] = [];
-      for (const key in resData) {
-        fetchedRecipes.push({...resData[key], id: key})
-      }
-      return fetchedRecipes;
-    })
-    )
-  
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+      .pipe(
+        map((resData) => {
+          const fetchedRecipes: Recipe[] = [];
+          for (const key in resData) {
+            fetchedRecipes.push({ ...resData[key], id: key });
+          }
+          return fetchedRecipes;
+        })
+      );
   }
-  
 
   getRecipe(id: string) {
-    return this.http.get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
-}
+    return this.http.get(
+      `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`
+    );
+  }
 
-
-
-  /*updateRecipe(index: number, newRecipe: Recipe) {
-    this.recipes[index] = newRecipe;
-    
-    this.recipesChanged.next(this.recipes.slice());
-  }*/
+  updateRecipe(id: string, newRecipe: Recipe) {
+    this.http
+      .put(
+        `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
+        newRecipe
+      )
+      .subscribe();
+  }
 
   deleteRecipe(id: string) {
-    return this.http
-    .delete(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
+    this.http
+      .delete(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
+      .subscribe();
   }
 }
-
