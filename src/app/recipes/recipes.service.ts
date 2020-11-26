@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
 import {map} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RecipeService {
@@ -30,7 +31,8 @@ export class RecipeService {
 
   loadedRecipes: Recipe[] = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient,
+    private router: Router){}
 
   saveRecipe(recipeData: {name: string, imageUrl: string, description: string, category: string}){
     this.http.post('https://thetastyplace-6a02c.firebaseio.com/recipes.json', recipeData)
@@ -59,12 +61,8 @@ export class RecipeService {
   
 
   getRecipe(id: string) {
-    this.http.get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
-    .subscribe(res=>{
-      console.log(res)
-    })
-  
-  }
+    return this.http.get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
+}
 
 
 
@@ -72,11 +70,11 @@ export class RecipeService {
     this.recipes[index] = newRecipe;
     
     this.recipesChanged.next(this.recipes.slice());
-  }
-
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice());
   }*/
+
+  deleteRecipe(id: string) {
+    return this.http
+    .delete(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
+  }
 }
 

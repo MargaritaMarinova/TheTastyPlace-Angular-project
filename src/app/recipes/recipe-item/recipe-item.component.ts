@@ -8,14 +8,19 @@ import { RecipeService } from '../recipes.service';
   styleUrls: ["./recipe-item.component.css"],
 })
 export class RecipeItemComponent implements OnInit {
-  @Input() recipe: Recipe;
+  @Input() recipe;
 
   constructor(private recipeService: RecipeService){
 
   }
 
   onDetails(id: string){
-    this.recipeService.getRecipe(id);
+    this.recipeService.getRecipe(id)
+    .subscribe(resData=> {
+      
+      this.recipe = resData;
+      console.log(this.recipe)
+    })
   }
  
 

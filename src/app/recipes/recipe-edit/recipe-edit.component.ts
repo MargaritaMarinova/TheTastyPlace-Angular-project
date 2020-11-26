@@ -17,15 +17,15 @@ export class RecipeEditComponent implements OnInit {
     private recipeService: RecipeService,
     private router: Router) { }
 
-  ngOnInit() {
-    this.route.params.subscribe(
+  ngOnInit() {}
+   /** this.route.params.subscribe(
       (params: Params) => {
         this.id = +params["id"];
         this.initForm();
       });
-  }
+  }*/
 
-  onSubmit() {
+  /**onSubmit() {
     const newRecipe = new Recipe (
       this.recipeForm.value['name'],
       this.recipeForm.value['description'],
@@ -53,6 +53,6 @@ export class RecipeEditComponent implements OnInit {
       'description': new FormControl(recipeDescription),
       'category': new FormControl(recipeCategory)
     });
-  }
+  }*/
 
 }
