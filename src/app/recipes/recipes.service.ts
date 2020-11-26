@@ -58,13 +58,17 @@ export class RecipeService {
   }
   
 
-  /*getRecipe(index: number) {
-    return this.recipes[index];
+  getRecipe(id: string) {
+    this.http.get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
+    .subscribe(res=>{
+      console.log(res)
+    })
+  
   }
 
 
 
-  updateRecipe(index: number, newRecipe: Recipe) {
+  /*updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
     
     this.recipesChanged.next(this.recipes.slice());
