@@ -24,12 +24,11 @@ export class RecipeCreateComponent implements OnInit {
   onSubmit() {
     const newRecipe = new Recipe (
       this.recipeForm.value['name'],
-      this.recipeForm.value['description'],
       this.recipeForm.value['imageUrl'],
+      this.recipeForm.value['description'],
       this.recipeForm.value['category']
     )
     this.recipeService.saveRecipe(newRecipe);
-    this.onCancel();
   }
 
   onCancel(){
