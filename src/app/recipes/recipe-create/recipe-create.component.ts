@@ -30,7 +30,7 @@ export class RecipeCreateComponent implements OnInit {
     )
     this.recipeService.saveRecipe(newRecipe);
     this.recipeService.getRecipes().subscribe(
-      res=> {
+      res=>{
         this.router.navigate(['recipes'])
       }
     )
