@@ -1,4 +1,8 @@
-<section class="recipe-container">
+<div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<section class="recipe-container" *ngIf="!isLoading">
     <img src="{{recipe.imageUrl}}">
     <div class="recipe-details-info">
         <h2>{{recipe.name}}</h2>

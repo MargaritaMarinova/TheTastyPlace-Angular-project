@@ -37,7 +37,13 @@ export class RecipeEditComponent implements OnInit {
       
     );
     this.recipeService.updateRecipe(this.id, newRecipe);
-    this.onCancel();
+    this.recipeService.getRecipes().subscribe(
+      res => {
+        
+        this.router.navigate([`recipes`])
+      }
+    )
+    
   }
 
   onCancel() {

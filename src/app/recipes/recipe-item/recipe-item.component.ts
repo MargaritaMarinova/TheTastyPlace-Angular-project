@@ -9,17 +9,19 @@ import { RecipeService } from '../recipes.service';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe;
+  isLoading=false;
 
   constructor(private recipeService: RecipeService){
 
   }
 
   onDetails(id: string){
+    this.isLoading=true;
     this.recipeService.getRecipe(id)
     .subscribe(resData=> {
       
       this.recipe = resData;
-      console.log(this.recipe)
+      this.isLoading = false;
     })
   }
  

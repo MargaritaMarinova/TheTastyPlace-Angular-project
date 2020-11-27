@@ -29,6 +29,11 @@ export class RecipeCreateComponent implements OnInit {
       this.recipeForm.value['category']
     )
     this.recipeService.saveRecipe(newRecipe);
+    this.recipeService.getRecipes().subscribe(
+      res=> {
+        this.router.navigate(['recipes'])
+      }
+    )
   }
 
   onCancel(){

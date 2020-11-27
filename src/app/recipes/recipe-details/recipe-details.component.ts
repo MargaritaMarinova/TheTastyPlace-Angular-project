@@ -13,6 +13,7 @@ import { RecipeService } from '../recipes.service';
 export class RecipeDetailsComponent implements OnInit {
   recipe;
   id: string;
+  isLoading = false;
 
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute,
@@ -20,6 +21,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading=true;
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -27,7 +29,7 @@ export class RecipeDetailsComponent implements OnInit {
           this.recipeService.getRecipe(this.id)
           .subscribe(resData=>{
             this.recipe = resData;
-            console.log(this.recipe)
+            this.isLoading = false;
           });
         }
       );
@@ -43,8 +45,14 @@ export class RecipeDetailsComponent implements OnInit {
 
   onDelete() {
     this.recipeService.deleteRecipe(this.id)
+    this.recipeService.getRecipes().subscribe(
+      res => {
+        this.router.navigate([`recipes`])
+      }
+      
+    )
    
-    this.router.navigate(['/']);
+    
   }
 }
 
