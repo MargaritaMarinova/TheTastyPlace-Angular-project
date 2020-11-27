@@ -8,6 +8,8 @@ import { UserService } from "../user.service";
   styleUrls: ["./user-register.component.css"],
 })
 export class UserRegisterComponent {
+  isLoading = false;
+
   constructor(private userService: UserService) {}
 
   onSubmit(form: NgForm) {
@@ -17,9 +19,18 @@ export class UserRegisterComponent {
 
     const email = form.value.email;
     const password = form.value.password;
-    this.userService.register(email, password).subscribe((resData) => {
-      console.log(resData);
-    });
+    this.isLoading = true;
+    
+    this.userService.register(email, password).subscribe(
+      (resData) => {
+        console.log(resData);
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    );
     form.reset();
   }
 }

@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="isLoading">   
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" *ngIf = "!isLoading">
             <div class="row">
                 <div class="col-xs-12">
                   <div class="form-group">

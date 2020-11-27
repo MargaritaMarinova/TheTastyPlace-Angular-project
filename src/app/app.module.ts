@@ -18,6 +18,7 @@ import { DropdownDirective } from './recipes/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipes.service';
 import {HttpClientModule} from '@angular/common/http';
+import { LoadingSpinnerComponent } from './users/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {HttpClientModule} from '@angular/common/http';
     UserLoginComponent,
     UserRegisterComponent,
     UserProfileComponent,
-    DropdownDirective
+    DropdownDirective,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

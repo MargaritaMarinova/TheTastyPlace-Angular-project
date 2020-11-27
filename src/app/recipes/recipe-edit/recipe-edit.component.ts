@@ -13,6 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: string;
   recipeForm: FormGroup;
   recipe: any;
+  isLoading= false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +45,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-
+    this.isLoading = true;
 
     this.recipeService.getRecipe(this.id).subscribe((resData) => {
       this.recipe = resData;
@@ -55,6 +56,7 @@ export class RecipeEditComponent implements OnInit {
         description: new FormControl(resData['description']),
         category: new FormControl(resData['category']),
       });
+      this.isLoading = false;
       console.log(this.recipeForm);
     });
     
