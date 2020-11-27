@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { UserService } from "../user.service";
 
 @Component({
-  selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.css']
+  selector: "app-user-register",
+  templateUrl: "./user-register.component.html",
+  styleUrls: ["./user-register.component.css"],
 })
-export class UserRegisterComponent implements OnInit {
+export class UserRegisterComponent {
+  constructor(private userService: UserService) {}
 
-  constructor() { }
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
 
-  ngOnInit(): void {
+    const email = form.value.email;
+    const password = form.value.password;
+    this.userService.register(email, password).subscribe((resData) => {
+      console.log(resData);
+    });
+    form.reset();
   }
-
 }
