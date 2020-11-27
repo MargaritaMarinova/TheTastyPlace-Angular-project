@@ -33,7 +33,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeForm.value["imageUrl"],
       this.recipeForm.value["description"],
       this.recipeForm.value["category"],
-      this.id
+      
     );
     this.recipeService.updateRecipe(this.id, newRecipe);
     this.onCancel();
@@ -44,15 +44,18 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-    let recipeName = "";
-    let recipeImageUrl = "";
-    let recipeDescription = "";
-    let recipeCategory = "";
+
 
     this.recipeService.getRecipe(this.id).subscribe((resData) => {
       this.recipe = resData;
-      recipeName = this.recipe['name']
-      console.log(this.recipe);
+      
+      this.recipeForm = new FormGroup({
+        name: new FormControl(resData['name']),
+        imageUrl: new FormControl(resData['imageUrl']),
+        description: new FormControl(resData['description']),
+        category: new FormControl(resData['category']),
+      });
+      console.log(this.recipeForm);
     });
     
 
@@ -61,11 +64,6 @@ export class RecipeEditComponent implements OnInit {
     let recipeDescription = recipe.description;
     let recipeCategory = recipe.category;*/
 
-    this.recipeForm = new FormGroup({
-      name: new FormControl(recipeName),
-      imageUrl: new FormControl(recipeImageUrl),
-      description: new FormControl(recipeDescription),
-      category: new FormControl(recipeCategory),
-    });
+    
   }
 }

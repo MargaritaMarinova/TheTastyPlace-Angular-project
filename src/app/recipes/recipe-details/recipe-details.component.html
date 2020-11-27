@@ -1,5 +1,5 @@
 <section class="recipe-container">
-    <img src="{{recipe.imageUrl}}">
+    <img src="{{recipe.imageUrl | async}}">
     <div class="recipe-details-info">
         <h2>{{recipe.name}}</h2>
         <p>{{recipe.description}}</p>
