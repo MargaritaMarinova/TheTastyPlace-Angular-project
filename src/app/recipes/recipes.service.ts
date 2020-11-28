@@ -1,37 +1,21 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
-import { map } from "rxjs/operators";
+import { exhaustMap, map, take } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { UserService } from '../users/user.service';
 
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
-  /**private recipes: Recipe[] = [
-    new Recipe(
-      "Pancakes1",
-      "Very delicious breacfast",
-      "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/k%2FPhoto%2FRecipes%2F2020-02-Kielbasa-and-Cabbage-Skillet%2Fkielbasa2",
-      "breakfast"
-    ),
-    new Recipe(
-      "Pancakes2",
-      "Very delicious breacfast",
-      "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/k%2FPhoto%2FRecipes%2F2020-02-Kielbasa-and-Cabbage-Skillet%2Fkielbasa2",
-      "breakfast"
-    ),
-    new Recipe(
-      "Pancakes3",
-      "Very delicious breacfast",
-      "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/k%2FPhoto%2FRecipes%2F2020-02-Kielbasa-and-Cabbage-Skillet%2Fkielbasa2",
-      "breakfast"
-    ),
-  ];**/
+  
 
   loadedRecipes: Recipe[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, 
+    private router: Router,
+    private userService: UserService) {}
 
   saveRecipe(recipeData: {
     name: string;
@@ -50,17 +34,21 @@ export class RecipeService {
   }
 
   getRecipes() {
-    return this.http
-      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
-      .pipe(
-        map((resData) => {
-          const fetchedRecipes: Recipe[] = [];
-          for (const key in resData) {
-            fetchedRecipes.push({ ...resData[key], id: key });
-          }
-          return fetchedRecipes;
-        })
-      );
+    return this.userService.user.pipe(
+      take(1), 
+      exhaustMap(user => {
+      return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json?", {
+        params: new HttpParams().set('auth', user.token)
+      })
+    }),
+    map((resData) => {
+      const fetchedRecipes: Recipe[] = [];
+      for (const key in resData) {
+        fetchedRecipes.push({ ...resData[key], id: key });
+      }
+      return fetchedRecipes;
+    }))
   }
 
   getRecipe(id: string) {
