@@ -4,18 +4,19 @@ import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
 import { exhaustMap, map, take } from "rxjs/operators";
 import { Router } from "@angular/router";
-import { UserService } from '../users/user.service';
+import { UserService } from "../users/user.service";
 
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
-  
 
   loadedRecipes: Recipe[] = [];
 
-  constructor(private http: HttpClient, 
+  constructor(
+    private http: HttpClient,
     private router: Router,
-    private userService: UserService) {}
+    private userService: UserService
+  ) {}
 
   saveRecipe(recipeData: {
     name: string;
@@ -34,21 +35,17 @@ export class RecipeService {
   }
 
   getRecipes() {
-    return this.userService.user.pipe(
-      take(1), 
-      exhaustMap(user => {
-      return this.http
-      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json?", {
-        params: new HttpParams().set('auth', user.token)
-      })
-    }),
-    map((resData) => {
-      const fetchedRecipes: Recipe[] = [];
-      for (const key in resData) {
-        fetchedRecipes.push({ ...resData[key], id: key });
-      }
-      return fetchedRecipes;
-    }))
+    return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json?")
+      .pipe(
+        map((resData) => {
+          const fetchedRecipes: Recipe[] = [];
+          for (const key in resData) {
+            fetchedRecipes.push({ ...resData[key], id: key });
+          }
+          return fetchedRecipes;
+        })
+      );
   }
 
   getRecipe(id: string) {

@@ -17,8 +17,9 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { DropdownDirective } from './recipes/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipes.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoadingSpinnerComponent } from './users/loading-spinner/loading-spinner.component';
+import { UserInterceptorService } from './users/user-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { LoadingSpinnerComponent } from './users/loading-spinner/loading-spinner
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RecipeService],
+  providers: [RecipeService, {provide: HTTP_INTERCEPTORS, useClass: UserInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
