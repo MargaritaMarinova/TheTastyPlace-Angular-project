@@ -7,7 +7,7 @@
             <a routerLink="/recipes" >Recipes</a>
         </li>
         <li routerLinkActive="active" *ngIf="isAuth">
-            <a routerLink="/create">Create New</a>
+            <a style="cursor: pointer" (click)="onNewRecipe()">Create New</a>
         </li>
         <li *ngIf = "isAuth">
             <a style="cursor: pointer" (click)="onLogout()">Log Out</a>

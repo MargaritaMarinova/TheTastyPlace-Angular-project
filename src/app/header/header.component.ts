@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from '../users/user.service';
 
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
   private subscription: Subscription;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.userService.user
@@ -22,6 +24,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(){
     this.userService.logout();
+  }
+
+  onNewRecipe() {
+    this.router.navigate(["create"], { relativeTo: this.route });
   }
 
   ngOnDestroy(){
