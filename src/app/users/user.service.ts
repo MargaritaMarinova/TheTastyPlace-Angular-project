@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -26,20 +26,7 @@ export class UserService {
           returnSecureToken: true,
         }
       )
-      .pipe(
-        catchError((errorRes) => {
-          let errorMessage = "Възникна неопределена грешка";
-          if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-          }
-          switch (errorRes.error.error.message) {
-            case "EMAIL_EXISTS":
-              errorMessage = "Този мейл вече съществува";
-          }
-
-          return throwError(errorMessage);
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   login(email: string, password: string) {
@@ -52,24 +39,26 @@ export class UserService {
           returnSecureToken: true,
         }
       )
-      .pipe(
-        catchError((errorRes) => {
-          console.log(errorRes);
-          let errorMessage = "Възникна неопределена грешка";
-          if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-          }
-          switch (errorRes.error.error.message) {
-            case "INVALID_PASSWORD":
-              errorMessage = "Невалидна парола";
-            case "EMAIL_NOT_FOUND":
-              errorMessage = "Този мейл не е регистриран";
-            case "USER_DISABLED":
-              errorMessage = "Този потребител е блокиран";
-          }
+      .pipe(catchError(this.handleError));
+  }
 
-          return throwError(errorMessage);
-        })
-      );
+  private handleError(errorRes: HttpErrorResponse) {
+    let errorMessage = "Възникна неопределена грешка";
+    if (!errorRes.error || !errorRes.error.error) {
+      return throwError(errorMessage);
+    }
+    switch (errorRes.error.error.message) {
+      case "EMAIL_EXISTS":
+        errorMessage = "Този и-мейл вече съществува";
+        break;
+      case "INVALID_PASSWORD":
+        errorMessage = "Невалидна парола";
+        break;
+      case "EMAIL_NOT_FOUND":
+        errorMessage = "Този и-мейл не е регистриран";
+        break;
+    }
+
+    return throwError(errorMessage);
   }
 }
