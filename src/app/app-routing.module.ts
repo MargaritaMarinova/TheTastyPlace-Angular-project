@@ -7,12 +7,14 @@ import { RecipesListComponent } from "./recipes/recipes-list/recipes-list.compon
 import { RecipesComponent } from "./recipes/recipes.component";
 import { UserLoginComponent } from "./users/user-login/user-login.component";
 import { UserRegisterComponent } from "./users/user-register/user-register.component";
+import { UserGuard } from './users/user.guard';
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/recipes", pathMatch: "full" },
   {
     path: "recipes",
     component: RecipesComponent,
+    canActivate: [UserGuard],
     children: [
       { path: "", component: RecipesListComponent },
       {path: "create", component: RecipeCreateComponent},
