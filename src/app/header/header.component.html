@@ -9,8 +9,8 @@
         <li routerLinkActive="active" *ngIf="isAuth">
             <a routerLink="/create">Create New</a>
         </li>
-        <li routerLinkActive="active" *ngIf = "isAuth">
-            <a style="cursor: pointer" >Log Out</a>
+        <li *ngIf = "isAuth">
+            <a style="cursor: pointer" (click)="onLogout()">Log Out</a>
         </li>
         <li routerLinkActive="active" *ngIf="!isAuth">
             <a routerLink="/login" >Login</a>
