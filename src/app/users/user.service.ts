@@ -5,6 +5,7 @@ import { BehaviorSubject, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from '@angular/router';
 
+
 interface UserResponseData {
   idToken: string;
   email: string;
@@ -17,6 +18,7 @@ interface UserResponseData {
 @Injectable({ providedIn: "root" })
 export class UserService {
   user = new BehaviorSubject<User>(null);
+  private tokenExpireTimer: any;
 
 
   constructor(private http: HttpClient,
@@ -87,12 +89,25 @@ export class UserService {
 
     if(loadedUser.token){
       this.user.next(loadedUser);
+      const expireTime = new Date(userInfo._tokenExpirationDate).getTime() - new Date().getTime(); 
+      this.autoLogout(expireTime)
     }
   }
 
   logout() {
     this.user.next(null);
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
+    localStorage.removeItem('userInfo');
+    if(this.tokenExpireTimer){
+      clearTimeout(this.tokenExpireTimer)
+    }
+    this.tokenExpireTimer = null;
+  }
+
+  autoLogout(expireTime: number) {
+    this.tokenExpireTimer = setTimeout(()=>{
+      this.logout();
+    }, expireTime)
   }
 
   private handleAuth(
@@ -104,6 +119,7 @@ export class UserService {
     const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userInfo', JSON.stringify(user));
   }
 
