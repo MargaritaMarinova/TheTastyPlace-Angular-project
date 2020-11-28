@@ -6,7 +6,7 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { UserService } from "./user.service";
-import {map} from 'rxjs/operators';
+import { map, take } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class UserGuard implements CanActivate {
@@ -15,9 +15,11 @@ export class UserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ): boolean | Promise<boolean> | Observable<boolean> {
-      return this.userService.user
-      .pipe(map(user => {
-         return user ? true : false; 
-      }));
+    return this.userService.user.pipe(
+      take(1),
+      map((user) => {
+        return user ? true : false;
+      })
+    );
   }
 }
