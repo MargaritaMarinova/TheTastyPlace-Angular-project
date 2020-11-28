@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class UserLoginComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private router : Router) { }
 
   onSubmit(form: NgForm) {
     this.isLoading = true;
@@ -24,6 +26,7 @@ export class UserLoginComponent {
     .subscribe((resData) => {
       console.log(resData);
       this.isLoading = false;
+      this.router.navigate(['/recipes'])
     },
     (errorMessage) => {
       console.log(errorMessage);
