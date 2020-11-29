@@ -1,0 +1,10 @@
+.intro-text {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.intro-text a {
+    color: #38AA32;
+    text-decoration: none;
+}
