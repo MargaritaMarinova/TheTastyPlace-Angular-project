@@ -42,3 +42,8 @@ border-radius: 2px;
     text-decoration: none;
     text-align: center;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}

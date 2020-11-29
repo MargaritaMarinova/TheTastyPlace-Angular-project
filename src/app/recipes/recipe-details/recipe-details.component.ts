@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { Recipe } from "../recipe.model";
 import { RecipeService } from "../recipes.service";
+import {exhaustMap, map, take} from 'rxjs/operators';
 
 @Component({
   selector: "app-recipe-details",
@@ -13,7 +14,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe;
   id: string;
   isLoading = false;
-  isFavorite = false;
+  isFavorite: boolean;
 
   constructor(
     private recipeService: RecipeService,
@@ -27,6 +28,7 @@ export class RecipeDetailsComponent implements OnInit {
       this.id = params["id"];
       this.recipeService.getRecipe(this.id).subscribe((resData) => {
         this.recipe = resData;
+        this.isFavorite = this.recipe.favorite;
         this.isLoading = false;
       });
     });
@@ -34,10 +36,12 @@ export class RecipeDetailsComponent implements OnInit {
 
   onChangeFavStatus() {
     this.isFavorite = !this.isFavorite;
-    this.recipeService.updateFavStatus(this.id, this.isFavorite).subscribe(res=>{
-      console.log(res)
-    })
-  }
+    this.recipeService.updateFavStatus(this.id, this.isFavorite)
+    .subscribe()
+
+};
+
+    
 
   onEditRecipe() {
     this.router.navigate(["edit"], { relativeTo: this.route });

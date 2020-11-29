@@ -10,6 +10,7 @@ import { RecipeService } from '../recipes.service';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe;
   isLoading=false;
+  isFavorite = false;
 
   constructor(private recipeService: RecipeService){
 
@@ -24,6 +25,8 @@ export class RecipeItemComponent implements OnInit {
       this.isLoading = false;
     })
   }
+
+
  
 
   ngOnInit(): void {}
