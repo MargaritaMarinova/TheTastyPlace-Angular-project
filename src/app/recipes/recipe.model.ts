@@ -11,5 +11,6 @@ export class Recipe {
     this.description = desc;    
     this.category = category;
     
+    
   }
 }

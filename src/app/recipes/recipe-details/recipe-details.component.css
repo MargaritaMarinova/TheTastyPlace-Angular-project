@@ -36,3 +36,7 @@
 .recipe-details-buttons > button {
     margin-left: 3px;
 }
+
+.favorite {
+    background-color: #38AA32;
+}

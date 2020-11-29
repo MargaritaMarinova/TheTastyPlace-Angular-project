@@ -12,6 +12,7 @@ import { RecipeService } from '../recipes.service';
 })
 export class RecipeCreateComponent implements OnInit {
   recipeForm: FormGroup;
+  
 
   constructor(private recipeService: RecipeService,
     private route: ActivatedRoute,
@@ -26,8 +27,8 @@ export class RecipeCreateComponent implements OnInit {
       this.recipeForm.value['name'],
       this.recipeForm.value['imageUrl'],
       this.recipeForm.value['description'],
-      this.recipeForm.value['category']
-    )
+      this.recipeForm.value['category'],
+             )
     this.recipeService.saveRecipe(newRecipe);
     this.recipeService.getRecipes().subscribe(
       res=>{
@@ -45,6 +46,7 @@ export class RecipeCreateComponent implements OnInit {
     let recipeImageUrl = '';
     let recipeDescription = '';
     let recipeCategory = '';
+    
 
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName),

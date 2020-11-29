@@ -33,7 +33,9 @@ border-radius: 2px;
 
 
 .recipe-details-link {
-    border: 1px solid green;
+    border: 2px solid #38AA32;
+    color: white;
+    background-color: #38AA32;
     border-radius: 3px;
     padding: 4px;
     margin-top: 12px;

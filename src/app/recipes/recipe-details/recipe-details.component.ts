@@ -36,7 +36,9 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
 
+  onAddToFav(){
     
+  }
   
 
   onEditRecipe() {

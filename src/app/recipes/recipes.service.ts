@@ -23,11 +23,15 @@ export class RecipeService {
     imageUrl: string;
     description: string;
     category: string;
+    
   }) {
     this.http
       .post(
         "https://thetastyplace-6a02c.firebaseio.com/recipes.json",
-        recipeData
+        {...recipeData,
+          favorite: 'false'
+        }
+        
       )
       .subscribe((response) => {
         console.log(response);
