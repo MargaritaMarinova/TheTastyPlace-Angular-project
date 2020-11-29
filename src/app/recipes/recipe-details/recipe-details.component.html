@@ -15,7 +15,7 @@
         </ul>
         <div class="recipe-details-buttons">
             <button class="btn btn-primary favorite"
-            (click)="onAddToFav()">Добави в любими</button>
+            (click)="onChangeFavStatus()">{{isFavorite? 'Изтрии от':'Добави в'}} любими</button>
             <button class="btn btn-primary"
             (click)="onEditRecipe()">Edit</button>
             <button class="btn btn-danger"

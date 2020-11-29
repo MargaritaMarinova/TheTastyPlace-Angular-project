@@ -67,6 +67,13 @@ export class RecipeService {
       .subscribe();
   }
 
+  updateFavStatus(id: string, isFavorite: boolean) {
+    return this.http
+    .patch(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
+    {'favorite': isFavorite}
+  )
+  }
+
   deleteRecipe(id: string) {
     this.http
       .delete(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
