@@ -20,6 +20,9 @@ import { RecipeService } from './recipes/recipes.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoadingSpinnerComponent } from './users/loading-spinner/loading-spinner.component';
 import { UserInterceptorService } from './users/user-interceptor.service';
+import { HomeComponent } from './home/home.component';
+import { SliderComponent } from './home/slider/slider.component';
+import { SliderTitlesComponent } from './home/slider-titles/slider-titles.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { UserInterceptorService } from './users/user-interceptor.service';
     UserRegisterComponent,
     UserProfileComponent,
     DropdownDirective,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HomeComponent,
+    SliderComponent,
+    SliderTitlesComponent
   ],
   imports: [
     BrowserModule,

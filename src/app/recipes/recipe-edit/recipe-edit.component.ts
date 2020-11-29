@@ -13,7 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: string;
   recipeForm: FormGroup;
   recipe: any;
-  isLoading= false;
+  isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,17 +33,12 @@ export class RecipeEditComponent implements OnInit {
       this.recipeForm.value["name"],
       this.recipeForm.value["imageUrl"],
       this.recipeForm.value["description"],
-      this.recipeForm.value["category"],
-      
+      this.recipeForm.value["category"]
     );
     this.recipeService.updateRecipe(this.id, newRecipe);
-    this.recipeService.getRecipes().subscribe(
-      res => {
-        
-        this.router.navigate([`recipes`])
-      }
-    )
-    
+    this.recipeService.getRecipes().subscribe((res) => {
+      this.router.navigate([`recipes`]);
+    });
   }
 
   onCancel() {
@@ -55,23 +50,14 @@ export class RecipeEditComponent implements OnInit {
 
     this.recipeService.getRecipe(this.id).subscribe((resData) => {
       this.recipe = resData;
-      
+
       this.recipeForm = new FormGroup({
-        name: new FormControl(resData['name']),
-        imageUrl: new FormControl(resData['imageUrl']),
-        description: new FormControl(resData['description']),
-        category: new FormControl(resData['category']),
+        name: new FormControl(resData["name"]),
+        imageUrl: new FormControl(resData["imageUrl"]),
+        description: new FormControl(resData["description"]),
+        category: new FormControl(resData["category"]),
       });
       this.isLoading = false;
-      console.log(this.recipeForm);
     });
-    
-
-    /**let recipeName = recipe.name;
-    let recipeImageUrl = recipe.imageUrl;
-    let recipeDescription = recipe.description;
-    let recipeCategory = recipe.category;*/
-
-    
   }
 }

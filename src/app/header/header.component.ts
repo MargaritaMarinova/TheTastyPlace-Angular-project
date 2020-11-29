@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNewRecipe() {
-    this.router.navigate(["create"], { relativeTo: this.route });
+    this.router.navigate(["create"]);
   }
 
   ngOnDestroy(){
