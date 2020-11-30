@@ -2,12 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    margin-left: 20px;
+    margin: 10px auto
 }
 
 .recipe-template {
     width: 45%;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .recipe-template >img {
