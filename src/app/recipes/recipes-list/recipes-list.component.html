@@ -1,8 +1,6 @@
 
-        <div *ngIf="isLoading">   
-            <app-loading-spinner></app-loading-spinner>
-        </div>
-        <div class="row" *ngIf="!isLoading">
+        
+        <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
 
         <div class="btn-group" appDropdown>
@@ -12,12 +10,16 @@
                 <li><a (click)="onSelectCat('Основни')">Основни</a></li>
                 <li><a (click)="onSelectCat('Снаксове')">Снаксове</a></li>
                 <li><a (click)="onSelectCat('Десерти')">Десерти</a></li>
+                <li><a (click)="onSelectCat('Всички')">Всички</a></li>
             </ul>
         </div>
     </div>
 </div>
 
 <hr>
+<div *ngIf="isLoading">   
+    <app-loading-spinner></app-loading-spinner>
+</div>
 
 <div class="row" *ngIf="!isLoading">
     <div class="recipes-container">

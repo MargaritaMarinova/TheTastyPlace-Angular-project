@@ -49,6 +49,19 @@ export class RecipeService {
   }
 
   filterRecipes(cat: string) {
+    if(cat==='Всички') {
+      return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+      .pipe(
+        map((resData) => {
+          const fetchedRecipes: Recipe[] = [];
+          for (const key in resData) {
+            fetchedRecipes.push({ ...resData[key], id: key });
+          }
+          return fetchedRecipes;
+        })
+      );
+    }
     return this.http
       .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
       .pipe(
