@@ -33,6 +33,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeForm.value["name"],
       this.recipeForm.value["imageUrl"],
       this.recipeForm.value["description"],
+      this.recipeForm.value["ingredients"],
       this.recipeForm.value["category"]
     );
     this.recipeService.updateRecipe(this.id, newRecipe);
@@ -55,7 +56,8 @@ export class RecipeEditComponent implements OnInit {
         name: new FormControl(resData["name"]),
         imageUrl: new FormControl(resData["imageUrl"]),
         description: new FormControl(resData["description"]),
-        category: new FormControl(resData["category"]),
+        ingredients: new FormControl(resData['ingredients']),
+        category: new FormControl(resData["category"])
       });
       this.isLoading = false;
     });

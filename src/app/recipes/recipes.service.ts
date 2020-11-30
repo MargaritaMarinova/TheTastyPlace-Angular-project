@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
-import { exhaustMap, map, take } from "rxjs/operators";
+import { exhaustMap, filter, map, take } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { UserService } from "../users/user.service";
 
@@ -23,16 +23,12 @@ export class RecipeService {
     imageUrl: string;
     description: string;
     category: string;
-    
   }) {
     this.http
-      .post(
-        "https://thetastyplace-6a02c.firebaseio.com/recipes.json",
-        {...recipeData,
-          favorite: 'false'
-        }
-        
-      )
+      .post("https://thetastyplace-6a02c.firebaseio.com/recipes.json", {
+        ...recipeData,
+        favorite: "false",
+      })
       .subscribe((response) => {
         console.log(response);
       });
@@ -40,7 +36,7 @@ export class RecipeService {
 
   getRecipes() {
     return this.http
-      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json?")
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
       .pipe(
         map((resData) => {
           const fetchedRecipes: Recipe[] = [];
@@ -48,6 +44,23 @@ export class RecipeService {
             fetchedRecipes.push({ ...resData[key], id: key });
           }
           return fetchedRecipes;
+        })
+      );
+  }
+
+  filterRecipes(cat: string) {
+    return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+      .pipe(
+        map((resData) => {
+          const filteredRecipes: Recipe[] = [];
+          for (const key in resData) {
+            console.log(resData[key]['category']);
+            if (resData[key]['category'] === cat) {
+              filteredRecipes.push({ ...resData[key], id: key });
+            }
+          }
+          return filteredRecipes;
         })
       );
   }
@@ -68,10 +81,10 @@ export class RecipeService {
   }
 
   updateFavStatus(id: string, isFavorite: boolean) {
-    return this.http
-    .patch(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
-    {'favorite': isFavorite}
-  )
+    return this.http.patch(
+      `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
+      { favorite: isFavorite }
+    );
   }
 
   deleteRecipe(id: string) {

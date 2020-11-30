@@ -15,9 +15,12 @@
 }
 
 .recipe-short-info > p:last-child {
-    margin-top: 30px;
+    margin-top: 64px;
     border-top: 1px solid lightgray;
-    padding-top: 10px;
+    padding-top: 20px;
+    color: #38AA32;
+    text-transform: uppercase;
+    
 }
 
 .recipe-image-and-details {
@@ -26,9 +29,16 @@
     justify-content: space-between;
 }
 
-.recipe-image-and-details > img {
-border: 1px solid darkgray;
-border-radius: 2px;
+.image-container {
+    border-radius: 5px;
+    height: 150px;
+    width: 220px;
+    border: 1px solid #38AA32;
+}
+
+.image-container > img {
+    min-height: 100%; 
+    width: auto;
 }
 
 
@@ -47,3 +57,4 @@ border-radius: 2px;
     display: flex;
     justify-content: space-between;
 }
+

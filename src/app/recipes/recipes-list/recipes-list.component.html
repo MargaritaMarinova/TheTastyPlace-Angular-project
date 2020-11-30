@@ -1,7 +1,27 @@
 
-<div class="row">
+        <div *ngIf="isLoading">   
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div class="row" *ngIf="!isLoading">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+        <div class="btn-group" appDropdown>
+            <button class="btn btn-primary dropdown-toggle">Категории <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a (click)="onSelectCat('Закуска')">Закуска</a></li>
+                <li><a (click)="onSelectCat('Основни')">Основни</a></li>
+                <li><a (click)="onSelectCat('Снаксове')">Снаксове</a></li>
+                <li><a (click)="onSelectCat('Десерти')">Десерти</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row" *ngIf="!isLoading">
     <div class="recipes-container">
         <app-recipe-item class="recipe-template"
-        *ngFor="let recipeEl of loadedRecipes" 
+        *ngFor="let recipeEl of filteredRecipes" 
         [recipe]="recipeEl"></app-recipe-item>
     </div>

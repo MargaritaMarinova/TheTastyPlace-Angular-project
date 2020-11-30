@@ -10,8 +10,9 @@ import { RecipeService } from "../recipes.service";
   styleUrls: ["./recipes-list.component.css"],
 })
 export class RecipesListComponent implements OnInit {
-  loadedRecipes: Recipe[];
+  filteredRecipes: Recipe[];
   subscription: Subscription;
+  isLoading = false;
 
   constructor(
     private recipeService: RecipeService,
@@ -20,11 +21,22 @@ export class RecipesListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.recipeService.getRecipes()
     .subscribe(resData=>{
-      this.loadedRecipes = resData;
+      this.filteredRecipes = resData;
+      this.isLoading = false;
     });
     
+  }
+
+  onSelectCat(cat: string) {
+    this.isLoading = true;
+    this.recipeService.filterRecipes(cat).subscribe((res) => {
+      console.log(res);
+      this.filteredRecipes = res;
+      this.isLoading = false;
+    });
   }
 
 

@@ -7,12 +7,8 @@
     <div class="recipe-details-info">
         <h2>{{recipe.name}}</h2>
         <p>{{recipe.description}}</p>
-        
-        <ul>
-            <label>Продукти:...</label>
-            <li>Продукт1</li>
-            <li>Продукт2</li>
-        </ul>
+        <h5>Продукти:</h5>
+        <p>{{recipe.ingredients}}</p>
         <div class="recipe-details-buttons">
             <button class="btn btn-primary favorite"
             (click)="onChangeFavStatus()">{{isFavorite? 'Изтрии от':'Добави в'}} любими</button>

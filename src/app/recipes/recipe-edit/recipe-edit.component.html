@@ -50,12 +50,31 @@
             <div class="row">
                 <div class="col-xs-12">
                   <div class="form-group">
-                      <label for="category">Category</label>
-                      <input 
+                      <label for="ingredients">Продукти</label>
+                      <textarea 
                       type="text" 
-                      id="category" 
-                      formControlName="category"
-                      class="form-control">
+                      id="ingredients" 
+                      formControlName="ingredients"
+                      class="form-control"
+                      rows="6">
+                    </textarea>
+                  </div>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                      <label for="category">Category</label>
+                      <select 
+                     name="category" 
+                     id="category" 
+                     formControlName="category"
+                     class="form-control">
+                        <option value="Закуска">Закуска</option>
+                        <option value="Основни">Основни</option>
+                        <option value="Снаксове">Снаксове</option>
+                        <option value="Десерти">Десерти</option>
+                      </select>
                   </div>  
                 </div>
             </div>
