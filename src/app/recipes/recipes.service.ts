@@ -65,14 +65,29 @@ export class RecipeService {
           })
         );
     }
+    if(cat==="Моите рецепти"){
+      return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+      .pipe(
+        map((resData) => {
+          const filteredRecipes: Recipe[] = [];
+          let currentUser = JSON.parse(localStorage.getItem("userInfo"));
+          for (const key in resData) {
+              if (resData[key]["creator"] === currentUser['id']) {
+              filteredRecipes.push({ ...resData[key], id: key });
+            }
+          }
+          return filteredRecipes;
+        })
+      ); 
+    }
     return this.http
       .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
       .pipe(
         map((resData) => {
           const filteredRecipes: Recipe[] = [];
           for (const key in resData) {
-            console.log(resData[key]["category"]);
-            if (resData[key]["category"] === cat) {
+              if (resData[key]["category"] === cat) {
               filteredRecipes.push({ ...resData[key], id: key });
             }
           }
