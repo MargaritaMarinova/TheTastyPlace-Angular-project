@@ -24,10 +24,13 @@ export class RecipeService {
     description: string;
     category: string;
   }) {
+    let currentUser = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(currentUser)
     this.http
       .post("https://thetastyplace-6a02c.firebaseio.com/recipes.json", {
         ...recipeData,
         favorite: "false",
+        creator: currentUser['id']
       })
       .subscribe((response) => {
         console.log(response);
@@ -49,18 +52,18 @@ export class RecipeService {
   }
 
   filterRecipes(cat: string) {
-    if(cat==='Всички') {
+    if (cat === "Всички") {
       return this.http
-      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
-      .pipe(
-        map((resData) => {
-          const fetchedRecipes: Recipe[] = [];
-          for (const key in resData) {
-            fetchedRecipes.push({ ...resData[key], id: key });
-          }
-          return fetchedRecipes;
-        })
-      );
+        .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+        .pipe(
+          map((resData) => {
+            const fetchedRecipes: Recipe[] = [];
+            for (const key in resData) {
+              fetchedRecipes.push({ ...resData[key], id: key });
+            }
+            return fetchedRecipes;
+          })
+        );
     }
     return this.http
       .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
@@ -68,8 +71,8 @@ export class RecipeService {
         map((resData) => {
           const filteredRecipes: Recipe[] = [];
           for (const key in resData) {
-            console.log(resData[key]['category']);
-            if (resData[key]['category'] === cat) {
+            console.log(resData[key]["category"]);
+            if (resData[key]["category"] === cat) {
               filteredRecipes.push({ ...resData[key], id: key });
             }
           }
@@ -98,6 +101,15 @@ export class RecipeService {
       `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
       { favorite: isFavorite }
     );
+  }
+
+  checkCreator(createdBy: string) {
+    let currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    if (currentUser["id"] === createdBy) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   deleteRecipe(id: string) {
