@@ -89,7 +89,7 @@ export class RecipeService {
 
   updateRecipe(id: string, newRecipe: Recipe) {
     this.http
-      .put(
+      .patch(
         `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
         newRecipe
       )
