@@ -11,7 +11,7 @@
         <p>{{recipe.ingredients}}</p>
         <div class="recipe-details-buttons">
             <button class="btn btn-primary favorite"
-            (click)="onChangeFav(recipe.id)">{{isFavorite? 'Изтрии от':'Добави в'}} любими</button>
+            (click)="onChangeFav()">{{isFavorite? 'Изтрии от':'Добави в'}} любими</button>
             <button class="btn btn-primary" *ngIf="isCreator"
             (click)="onEditRecipe()">Edit</button>
             <button class="btn btn-danger" *ngIf="isCreator"

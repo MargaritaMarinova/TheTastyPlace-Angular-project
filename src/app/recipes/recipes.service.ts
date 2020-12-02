@@ -118,14 +118,16 @@ export class RecipeService {
       .subscribe();
   }
 
-    checkIfiSFavorite(id:string){
-    return this.http
-      .get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`).subscribe(res=>{
-        let favoriteStatus = res['favorite'];
-        console.log(favoriteStatus)
-      })
-      
-  }
+    checkIfiSFavorite(favorites){
+      let currentUser = JSON.parse(localStorage.getItem("userInfo"));
+      let userId = currentUser["id"];
+      if(favorites.includes(userId)){
+        return true;
+      }
+           else {
+          return false;
+        }
+       }
 
   updateFavorite(id: string) {
     let currentUser = JSON.parse(localStorage.getItem("userInfo"));
@@ -134,12 +136,11 @@ export class RecipeService {
       .get(`https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`)
       .subscribe((resData) => {
         this.favorites = resData["favorite"];
-        //console.log('resData ' + resData['favorite']);
         if (this.favorites.includes(userId)) {
           for (let i = 0; i <= this.favorites.length; i++) {
             if (this.favorites[i] === userId) {
               this.favorites.splice(i, 1);
-              //console.log('favorites ' + this.favorites)
+              console.log('favorites ' + this.favorites)
             }
           }
         } else {
