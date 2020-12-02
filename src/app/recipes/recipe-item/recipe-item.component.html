@@ -9,6 +9,7 @@
         <div class="image-container">
             <img src="{{recipe.imageUrl}}" alt="{{recipe.name}}" class="img-responsive">
         </div>
+        
         <a style="cursor:pointer" [routerLink]="[recipe.id]" (click)="onDetails(recipe.id)" class="recipe-details-link">See details</a>
     </span>
 </div>

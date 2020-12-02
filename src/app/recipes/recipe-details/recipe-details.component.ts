@@ -15,7 +15,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe;
   id: string;
   isLoading = false;
-  isFavorite: boolean;
+  isFavorite: any;
   isCreator: boolean;
 
   constructor(
@@ -31,27 +31,28 @@ export class RecipeDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params["id"];
 
+      this.isFavorite = this.recipeService.checkIfiSFavorite(this.id)
+      console.log(this.isFavorite)
+      
+
       this.recipeService.getRecipe(this.id).subscribe((resData) => {
         this.isCreator = this.recipeService.checkCreator(resData['creator']);
         
         this.recipe = resData;
-        this.isFavorite = this.recipe.favorite;
         this.isLoading = false;
       });
     });
   }
 
-  onChangeFavStatus() {
-    this.isFavorite = !this.isFavorite;
-    this.recipeService.updateFavStatus(this.id, this.isFavorite)
-    .subscribe()
-
-};
-
     
 
   onEditRecipe() {
     this.router.navigate(["edit"], { relativeTo: this.route });
+  }
+
+  onChangeFav(id:string) {
+    this.isFavorite = !this.isFavorite;    
+    this.recipeService.updateFavorite(id);
   }
 
   onDelete() {

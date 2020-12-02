@@ -10,11 +10,11 @@ import { RecipeService } from '../recipes.service';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe;
   isLoading=false;
-  isFavorite = false;
+  isFavorite: any;
+  isCreator: boolean;
+  
 
-  constructor(private recipeService: RecipeService){
-
-  }
+  constructor(private recipeService: RecipeService){}
 
   onDetails(id: string){
     this.isLoading=true;
@@ -26,8 +26,11 @@ export class RecipeItemComponent implements OnInit {
     })
   }
 
+  
 
- 
+  ngOnInit(){
+          
+  }
 
-  ngOnInit(): void {}
+
 }
