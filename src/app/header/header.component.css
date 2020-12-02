@@ -1,17 +1,18 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
     width: 90%;
-    margin: 0 auto;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background: white;
+    margin: 0 auto 10px auto;
+    box-shadow: 3px 2px 5px 1px rgba(0,0,0,0.38);
+    height: 80px;
+    font-size: 20px;
+}
+
+nav ul li {
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 .logo-wrapper {
-    max-width:180px;
+    max-width:130px;
     padding: 0 20px;
     
 }
@@ -20,19 +21,3 @@ nav {
     width: 70%;
 }
 
-nav ul {
-    display:flex;
-    margin:0;
-}
-
-nav ul li {
-    list-style: none;
-    margin:0 12px;
-    padding: 25px 0;
-    border-top: 5px solid transparent;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #4a4e52;
-}

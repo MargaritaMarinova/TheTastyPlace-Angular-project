@@ -22,6 +22,7 @@ import { LoadingSpinnerComponent } from './users/loading-spinner/loading-spinner
 import { UserInterceptorService } from './users/user-interceptor.service';
 import { HomeComponent } from './home/home.component';
 import { SliderTitlesComponent } from './home/slider-titles/slider-titles.component';
+import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-category.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SliderTitlesComponent } from './home/slider-titles/slider-titles.compon
     DropdownDirective,
     LoadingSpinnerComponent,
     HomeComponent,
-    SliderTitlesComponent
+    SliderTitlesComponent,
+    RecipeCategoryComponent
   ],
   imports: [
     BrowserModule,
