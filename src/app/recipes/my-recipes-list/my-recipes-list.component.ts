@@ -15,9 +15,11 @@ export class MyRecipesListComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.recipeService.filterRecipes('Моите рецепти').subscribe(res=>{
       console.log(res)
       this.filteredRecipes = res;
+      this.isLoading = false;
     })
   }
 

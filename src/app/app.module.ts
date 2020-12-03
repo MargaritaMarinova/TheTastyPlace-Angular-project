@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { SliderTitlesComponent } from './home/slider-titles/slider-titles.component';
 import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-category.component';
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
+import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-lis
     HomeComponent,
     SliderTitlesComponent,
     RecipeCategoryComponent,
-    MyRecipesListComponent
+    MyRecipesListComponent,
+    FavRecipesListComponent
   ],
   imports: [
     BrowserModule,

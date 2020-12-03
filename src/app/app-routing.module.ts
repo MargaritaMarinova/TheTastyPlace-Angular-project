@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
 
 import { RecipeCategoryComponent } from "./recipes/recipe-category/recipe-category.component";
@@ -29,6 +30,14 @@ const appRoutes: Routes = [
   {
     path: "myrecipes",
     component: MyRecipesListComponent,
+    children: [
+      { path: ":id", component: RecipeDetailsComponent },
+      { path: ":id/edit", component: RecipeEditComponent },
+    ],
+  },
+  {
+    path: "favoriterecipes",
+    component: FavRecipesListComponent,
     children: [
       { path: ":id", component: RecipeDetailsComponent },
       { path: ":id/edit", component: RecipeEditComponent },
