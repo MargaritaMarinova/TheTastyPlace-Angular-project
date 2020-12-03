@@ -1,0 +1,17 @@
+<div class="row container-wrapper">
+    <div class="col-md-4">
+        <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        
+        <div class="row" *ngIf="!isLoading">
+            <div class="recipes-container">
+                <app-recipe-item class="recipe-template" *ngFor="let recipeEl of filteredRecipes" [recipe]="recipeEl">
+                </app-recipe-item>
+            </div>
+        </div>  
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>

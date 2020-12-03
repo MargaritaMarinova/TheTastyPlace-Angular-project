@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     })
   }
 
+  onMyRecipes(){
+    this.router.navigate(["myrecipes"])
+  }
+
  
   ngOnDestroy(){
     this.subscription.unsubscribe();

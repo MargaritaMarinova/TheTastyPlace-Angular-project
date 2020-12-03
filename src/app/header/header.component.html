@@ -14,8 +14,16 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="isAuth" class="dropdown" appDropdown>
+                    <a style="cursor: pointer" class="dropdown-toggle" role="button">Моят прифил <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a style="cursor: pointer">Любими рецепти</a></li>
+                        <li><a style="cursor: pointer" (click)="onMyRecipes()">Моите рецепти</a></li>
+                        <li><a style="cursor: pointer" (click)="onNewRecipe()">Създай рецепта</a></li>
+                    </ul>
+                </li>
                     
-                <li *ngIf="isAuth"><a style="cursor: pointer" (click)="onNewRecipe()">Създай рецепта</a></li>
                 <li *ngIf="isAuth">
                     <a style="cursor: pointer" (click)="onLogout()">Log Out</a>
                 </li>

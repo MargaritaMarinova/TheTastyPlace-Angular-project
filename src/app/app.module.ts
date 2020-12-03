@@ -23,6 +23,7 @@ import { UserInterceptorService } from './users/user-interceptor.service';
 import { HomeComponent } from './home/home.component';
 import { SliderTitlesComponent } from './home/slider-titles/slider-titles.component';
 import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-category.component';
+import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-catego
     LoadingSpinnerComponent,
     HomeComponent,
     SliderTitlesComponent,
-    RecipeCategoryComponent
+    RecipeCategoryComponent,
+    MyRecipesListComponent
   ],
   imports: [
     BrowserModule,
