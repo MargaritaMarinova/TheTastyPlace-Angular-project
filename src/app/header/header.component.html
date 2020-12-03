@@ -14,27 +14,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="isAuth" class="dropdown" appDropdown>
-                    <a style="cursor: pointer" class="dropdown-toggle" role="button">Категории <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a (click)="onSelectCat('Закуска')">Закуска</a></li>
-                        <li><a (click)="onSelectCat('Основни')">Основни</a></li>
-                        <li><a (click)="onSelectCat('Снаксове')">Снаксове</a></li>
-                        <li><a (click)="onSelectCat('Десерти')">Десерти</a></li>
-                        <li><a (click)="onSelectCat('Всички')">Всички</a></li>
-                        <li><a (click)="onSelectCat('Моите рецепти')">Моите рецепти</a></li>
-                    </ul>
-                </li>
-                <li *ngIf="isAuth" class="dropdown" appDropdown>
-                    <a style="cursor: pointer" class="dropdown-toggle" role="button">Моят прифил <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer">Любими рецепти</a></li>
-                        <li><a style="cursor: pointer">Моите рецепти</a></li>
-                        <li><a style="cursor: pointer" (click)="onNewRecipe()">Създай рецепта</a></li>
-                    </ul>
-                </li>
+                    
+                <li *ngIf="isAuth"><a style="cursor: pointer" (click)="onNewRecipe()">Създай рецепта</a></li>
                 <li *ngIf="isAuth">
                     <a style="cursor: pointer" (click)="onLogout()">Log Out</a>
                 </li>

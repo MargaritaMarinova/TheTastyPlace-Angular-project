@@ -39,8 +39,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.recipeService.filterRecipes(cat).subscribe(res=>{
       console.log(res)
-      this.filteredRecipes = res;
-      console.log(this.filteredRecipes)
       this.isLoading = false;
     })
   }
