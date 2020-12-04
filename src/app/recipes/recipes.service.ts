@@ -5,12 +5,14 @@ import { Recipe } from "./recipe.model";
 import { exhaustMap, filter, map, take } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { UserService } from "../users/user.service";
+import { registerLocaleData } from '@angular/common';
 
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   favorites = [];
   isFavorite: boolean;
+  selectedRecipe: any;
 
   loadedRecipes: Recipe[] = [];
 
@@ -102,11 +104,26 @@ export class RecipeService {
   }
 
   getRecipe(id: string) {
-    //done
-    return this.http.get(
-      `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`
-    );
+  
+    return this.http
+      .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
+      .pipe(
+        map((resData) => {
+          const fetchedRecipes: Recipe[] = [];
+          
+          for (const key in resData) {
+            fetchedRecipes.push({ ...resData[key], id: key });
+            for(let el of fetchedRecipes) {
+              if(el['id']===id){
+                this.selectedRecipe = el;
+              }
+            }
+          }
+          return this.selectedRecipe;
+        })
+      );
   }
+  
 
   updateRecipe(id: string, newRecipe: Recipe) {
     //done

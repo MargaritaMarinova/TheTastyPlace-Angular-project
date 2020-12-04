@@ -8,7 +8,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
+import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-item.component';
 import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { UsersComponent } from './users/users.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
@@ -25,6 +25,7 @@ import { SliderTitlesComponent } from './home/slider-titles/slider-titles.compon
 import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-category.component';
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
 import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
+
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Recipe } from "../recipe.model";
-import { RecipeService } from '../recipes.service';
+import { RecipeService } from '../../recipes.service';
+
+
 
 @Component({
   selector: "app-recipe-item",
@@ -9,28 +10,21 @@ import { RecipeService } from '../recipes.service';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe;
-  isLoading=false;
+  isLoading = false;
   isFavorite: any;
   isCreator: boolean;
-  
 
-  constructor(private recipeService: RecipeService){}
+  constructor(private recipeService: RecipeService) {}
 
-  onDetails(id: string){
-    this.isLoading=true;
-    this.recipeService.getRecipe(id)
-    .subscribe(resData=> {
-      
+  onDetails(id: string) {
+    this.isLoading = true;
+    this.recipeService.getRecipe(id).subscribe((resData) => {
+      console.log(resData)
       this.recipe = resData;
+      
       this.isLoading = false;
-    })
+    });
   }
 
-  
-
-  ngOnInit(){
-          
-  }
-
-
+  ngOnInit() {}
 }
