@@ -2,14 +2,13 @@
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-1">
         <div class="btn-group" appDropdown>
-            <button class="btn btn-primary dropdown-toggle">Категории <span class="caret"></span></button>
+            <button class="btn dropdown-toggle cat-button">Категории  <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a (click)="onSelectCat('Закуска')">Закуска</a></li>
+                <li class="option"><a (click)="onSelectCat('Закуска')">Закуска</a></li>
                 <li><a (click)="onSelectCat('Основни')">Основни</a></li>
                 <li><a (click)="onSelectCat('Снаксове')">Снаксове</a></li>
                 <li><a (click)="onSelectCat('Десерти')">Десерти</a></li>
                 <li><a (click)="onSelectCat('Всички')">Всички</a></li>
-                <li><a (click)="onSelectCat('Моите рецепти')">Моите рецепти</a></li>
             </ul>
         </div>
     </div>

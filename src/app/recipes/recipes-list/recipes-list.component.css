@@ -15,3 +15,21 @@
 .recipe-template >img {
     width: 100%;
 }
+
+.cat-button {
+    background-color: #38AA32;
+    color: white;
+    padding: 5% 20%;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    border: 1px solid #38AA32;
+}
+
+.cat-button:click {
+    background-color: #38AA32;
+}
+
+li {
+    cursor: pointer;
+}

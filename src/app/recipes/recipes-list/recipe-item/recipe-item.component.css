@@ -69,12 +69,14 @@
     color: white;
     background-color: #38AA32;
     border-radius: 3px;
-    padding: 5% 31%;
+    padding: 5% 29%;
     width: 50px;
     margin-top: 12px;
     text-decoration: none;
+    text-transform: uppercase;
     text-align: center;
-    font-size: 20px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
 }
 
 .category-text {

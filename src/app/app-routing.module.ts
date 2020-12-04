@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     path: "favoriterecipes",
     component: FavRecipesListComponent,
     children: [
+      { path: "", component: SelectRecipeTextComponent },
       { path: ":id", component: RecipeDetailsComponent },
       { path: ":id/edit", component: RecipeEditComponent },
     ],
