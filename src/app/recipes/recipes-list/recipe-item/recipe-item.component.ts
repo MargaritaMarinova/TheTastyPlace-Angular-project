@@ -13,6 +13,7 @@ export class RecipeItemComponent implements OnInit {
   isLoading = false;
   isFavorite: any;
   isCreator: boolean;
+  isShowingDetails=false;
 
   constructor(private recipeService: RecipeService) {}
 
@@ -23,6 +24,7 @@ export class RecipeItemComponent implements OnInit {
       this.recipe = resData;
       
       this.isLoading = false;
+      this.isShowingDetails = true;
     });
   }
 

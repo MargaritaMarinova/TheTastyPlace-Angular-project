@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
+import { SelectRecipeTextComponent } from './recipes/my-recipes-list/select-recipe-text/select-recipe-text.component';
 
 import { RecipeCategoryComponent } from "./recipes/recipe-category/recipe-category.component";
 import { RecipeCreateComponent } from "./recipes/recipe-create/recipe-create.component";
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     path: "myrecipes",
     component: MyRecipesListComponent,
     children: [
+      { path: "", component: SelectRecipeTextComponent },
       { path: ":id", component: RecipeDetailsComponent },
       { path: ":id/edit", component: RecipeEditComponent },
     ],

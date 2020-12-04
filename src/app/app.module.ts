@@ -25,6 +25,7 @@ import { SliderTitlesComponent } from './home/slider-titles/slider-titles.compon
 import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-category.component';
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
 import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
+import { SelectRecipeTextComponent} from './recipes/my-recipes-list/select-recipe-text/select-recipe-text.component'
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-
     SliderTitlesComponent,
     RecipeCategoryComponent,
     MyRecipesListComponent,
-    FavRecipesListComponent
+    FavRecipesListComponent,
+    SelectRecipeTextComponent
   ],
   imports: [
     BrowserModule,

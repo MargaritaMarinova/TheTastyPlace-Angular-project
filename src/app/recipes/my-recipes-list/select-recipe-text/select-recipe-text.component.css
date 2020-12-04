@@ -1,0 +1,11 @@
+.text-wrapper {
+    margin-top: 20%;
+}
+
+
+h3 {
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    color: #38AA32;
+    text-align: center;
+}
