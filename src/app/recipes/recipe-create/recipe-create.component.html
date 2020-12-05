@@ -9,7 +9,8 @@
                       type="text" 
                       id="name"
                       formControlName="name" 
-                      class="form-control">
+                      class="form-control"
+                      required>
                   </div>  
                 </div>
             </div>
@@ -21,7 +22,8 @@
                       type="text" 
                       id="imageUrl" 
                       formControlName="imageUrl"
-                      class="form-control">
+                      class="form-control"
+                      required>
                   </div>  
                 </div>
             </div>
@@ -39,7 +41,8 @@
                       id="description" 
                       formControlName="description"
                       class="form-control"
-                      rows="6">
+                      rows="6"
+                      required>
                     </textarea>
                   </div>  
                 </div>
@@ -53,7 +56,8 @@
                       id="ingredients" 
                       formControlName="ingredients"
                       class="form-control"
-                      rows="6">
+                      rows="6"
+                      required>
                     </textarea>
                   </div>  
                 </div>
@@ -67,7 +71,8 @@
                      name="category" 
                      id="category" 
                      formControlName="category"
-                     class="form-control">
+                     class="form-control"
+                     required>
                         <option value="Закуска">Закуска</option>
                         <option value="Основни">Основни</option>
                         <option value="Снаксове">Снаксове</option>
@@ -81,7 +86,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                  <button type="submit" class="btn btn-success">Save</button>
+                  <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
                   <button type="button" 
                   class="btn btn-danger"
                   (click)="onCancel()">Cancel</button>  
