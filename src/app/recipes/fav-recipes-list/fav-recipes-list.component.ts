@@ -15,19 +15,19 @@ export class FavRecipesListComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     let currentUser = JSON.parse(localStorage.getItem("userInfo"));
     let userId = currentUser['id']
-    console.log('user Id: '+userId)
+    
     this.recipeService.getRecipes().subscribe(resData=>{
       for (let recipe of resData) {
           let currentFav = recipe['favorite']
           
           if (currentFav.includes(userId)) {
-              console.log(true)
-              console.log(recipe)
-              this.filteredRecipes.push(recipe)
+          this.filteredRecipes.push(recipe)
           }
       }
+      this.isLoading = false;
       console.log(this.filteredRecipes)
       
     })

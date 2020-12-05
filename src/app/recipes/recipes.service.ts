@@ -1,11 +1,10 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
-import { exhaustMap, filter, map, take } from "rxjs/operators";
-import { Router } from "@angular/router";
-import { UserService } from "../users/user.service";
-import { registerLocaleData } from '@angular/common';
+import {  map } from "rxjs/operators";
+
+
 
 @Injectable()
 export class RecipeService {
@@ -17,9 +16,7 @@ export class RecipeService {
   loadedRecipes: Recipe[] = [];
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
-    private userService: UserService
+    private http: HttpClient
   ) {}
 
   saveRecipe(recipeData: {

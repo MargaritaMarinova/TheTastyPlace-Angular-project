@@ -1,12 +1,13 @@
 <div class="row container-wrapper">
     <h3>Моите рецепти</h3>
     <hr>
-    <div *ngIf="filteredRecipes.length<1 && !isLoading" class="recipe-start">
-        <h3>Няма налични рецепти в тази категория</h3>
-    </div>
     <div *ngIf="isLoading">
         <app-loading-spinner></app-loading-spinner>
     </div>
+    <div *ngIf="!isLoading && filteredRecipes.length<1" class="recipe-start">
+        <h3>Няма налични рецепти в тази категория</h3>
+    </div>
+    
 
 
     <div class="col-md-4" *ngIf="filteredRecipes.length>= 1 && !isLoading">
