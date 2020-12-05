@@ -37,7 +37,7 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(["../"], { relativeTo: this.route });
+    this.router.navigate(["/recipes"], { relativeTo: this.route });
   }
 
   private initForm() {
