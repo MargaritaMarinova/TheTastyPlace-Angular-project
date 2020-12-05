@@ -53,6 +53,7 @@
 .image-container {
     border-radius: 5px;
     height: 150px;
+    min-height: 100px;
     max-width: 220px;
     margin-bottom: 25px;
 }

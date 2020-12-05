@@ -1,6 +1,9 @@
 <div class="row container-wrapper">
-    <h3>Моите рецепти</h3>
-    <hr>
+    <div class="title-wrapper">
+        <h3>Моите рецепти</h3>
+        <hr>
+    </div>
+    
     <div *ngIf="isLoading">
         <app-loading-spinner></app-loading-spinner>
     </div>

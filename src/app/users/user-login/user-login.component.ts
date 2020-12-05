@@ -26,7 +26,7 @@ export class UserLoginComponent {
     .subscribe((resData) => {
       console.log(resData);
       this.isLoading = false;
-      this.router.navigate(['/recipes'])
+      this.router.navigate([''])
     },
     (errorMessage) => {
       console.log(errorMessage);

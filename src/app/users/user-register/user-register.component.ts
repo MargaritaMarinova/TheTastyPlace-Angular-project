@@ -28,7 +28,7 @@ export class UserRegisterComponent {
       (resData) => {
         console.log(resData);
         this.isLoading = false;
-        this.router.navigate(['/recipes'])
+        this.router.navigate([''])
       },
       (errorMessage) => {
         console.log(errorMessage);

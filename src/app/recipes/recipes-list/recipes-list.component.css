@@ -27,9 +27,7 @@
     border: 1px solid #38AA32;
 }
 
-.cat-button:click {
-    background-color: #38AA32;
-}
+
 
 li {
     cursor: pointer;
