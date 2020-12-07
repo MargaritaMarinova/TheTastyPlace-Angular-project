@@ -42,8 +42,8 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
-  onCancel() {
-    this.router.navigate(["../"], { relativeTo: this.route });
+  onClear() {
+    this.initForm();
   }
 
   private initForm() {
