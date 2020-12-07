@@ -7,8 +7,8 @@
 50% { left: -200%; }
 70% { left: -200%; }
 75% { left: -300%; }
-95% { left: -300%; }
-100% { left: -400%; }
+100% { left: -300%; }
+
 }
 * {
   box-sizing: border-box;
@@ -23,7 +23,7 @@ div#captioned-gallery {
 }
 figure.slider { 
   position: relative; width: 500%;
-  font-size: 0; animation: 15s slidy infinite; 
+  font-size: 0; animation: 17s slidy infinite; 
 }
 figure.slider figure { 
   width: 20%; height: auto;

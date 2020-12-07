@@ -22,6 +22,9 @@
         </div>
     </div>
     <div class="col-md-8" *ngIf="filteredRecipes.length>= 1 && !isLoading">
-        <router-outlet></router-outlet>
+        <div class="testclass">
+            <router-outlet></router-outlet>
+        </div>
+        
     </div>
 </div>

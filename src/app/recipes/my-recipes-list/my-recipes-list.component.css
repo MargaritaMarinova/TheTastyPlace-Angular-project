@@ -13,16 +13,10 @@ h3 {
     font-family: 'Helvetica', sans-serif;
     opacity: 70%;
     /*position: fixed;
-    margin-top: -20px;
+    margin-top: -20px;*/
 }
 
-.title-wrapper {
-    background-color: white;
-    width: 100%;
-    position: fixed;
-    margin-top: -20px;
-    border: 1px solid red*/
-}
+
 
 .recipe-start {
     width: 50%;
