@@ -1,0 +1,14 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
+
+.back-button{
+    background-color:  #38AA32;
+    border-radius: 3px;
+    margin-left: 100px;
+    padding: 5px 20px;
+    color: white;
+}
+
+.back-button i {
+    color: white;
+    margin-right: 2px;
+}

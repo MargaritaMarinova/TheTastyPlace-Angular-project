@@ -1,6 +1,7 @@
 <div *ngIf="isLoading">
     <app-loading-spinner></app-loading-spinner>
 </div>
+<app-back-button></app-back-button>
 
 <section class="recipe-container" *ngIf="!isLoading">
     <img src="{{recipe.imageUrl}}">

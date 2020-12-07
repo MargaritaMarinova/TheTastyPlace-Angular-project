@@ -26,6 +26,7 @@ import { RecipeCategoryComponent } from './recipes/recipe-category/recipe-catego
 import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-list.component';
 import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
 import { SelectRecipeTextComponent} from './recipes/my-recipes-list/select-recipe-text/select-recipe-text.component'
+import { BackButtonComponent } from './recipes/back-button/back-button.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SelectRecipeTextComponent} from './recipes/my-recipes-list/select-recip
     RecipeCategoryComponent,
     MyRecipesListComponent,
     FavRecipesListComponent,
-    SelectRecipeTextComponent
+    SelectRecipeTextComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,
