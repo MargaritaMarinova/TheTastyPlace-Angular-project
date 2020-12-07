@@ -40,3 +40,7 @@
 .favorite {
     background-color: #38AA32;
 }
+
+button i {
+    margin-right: 4px;
+}

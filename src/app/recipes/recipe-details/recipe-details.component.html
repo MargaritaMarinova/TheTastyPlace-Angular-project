@@ -1,7 +1,7 @@
 <div *ngIf="isLoading">
     <app-loading-spinner></app-loading-spinner>
 </div>
-<app-back-button></app-back-button>
+<app-back-button *ngIf="!isLoading"></app-back-button>
 
 <section class="recipe-container" *ngIf="!isLoading">
     <img src="{{recipe.imageUrl}}">
@@ -12,7 +12,7 @@
         <p>{{recipe.ingredients}}</p>
         <div class="recipe-details-buttons">
             <button class="btn btn-primary favorite"
-            (click)="onChangeFav()">{{isFavorite? 'Изтрий от':'Добави в'}} любими</button>
+            (click)="onChangeFav()"><i class="fas fa-heart" *ngIf="!isFavorite"></i><i class="fas fa-heart" style="color:rgb(194, 109, 109);" *ngIf="isFavorite"></i>{{isFavorite? 'Изтрий от':'Добави в'}} любими</button>
             <button class="btn btn-primary" *ngIf="isCreator"
             (click)="onEditRecipe()">Редактирай</button>
             <button class="btn btn-danger" *ngIf="isCreator"
