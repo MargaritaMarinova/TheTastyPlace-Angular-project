@@ -8,3 +8,10 @@
     color: #38AA32;
     text-decoration: none;
 }
+
+img {
+    
+    width: 70%;
+    height: 70%;
+    margin: -60px auto;
+}
