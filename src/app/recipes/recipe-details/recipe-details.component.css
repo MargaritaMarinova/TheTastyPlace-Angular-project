@@ -1,4 +1,4 @@
-.recipe-container {
+/*.recipe-container {
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -25,7 +25,7 @@
 
 .recipe-details-info ul li {
     list-style: none;
-}
+}*/
 
 .recipe-details-buttons {
    margin-top: 50px;
@@ -39,8 +39,20 @@
 
 .favorite {
     background-color: #38AA32;
+    margin-left: 0;
 }
 
 button i {
     margin-right: 4px;
+}
+
+.container-wrapper {
+    margin-top: 20px;
+}
+img {
+    width: 100%;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 3px 2px 5px 1px rgba(0,0,0,0.38);
+    margin-right: 30px;
 }
