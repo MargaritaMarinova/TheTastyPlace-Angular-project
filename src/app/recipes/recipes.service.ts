@@ -2,9 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Recipe } from "./recipe.model";
-import {  map } from "rxjs/operators";
-
-
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class RecipeService {
@@ -15,9 +13,7 @@ export class RecipeService {
 
   loadedRecipes: Recipe[] = [];
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   saveRecipe(recipeData: {
     //done
@@ -31,7 +27,7 @@ export class RecipeService {
     this.http
       .post("https://thetastyplace-6a02c.firebaseio.com/recipes.json", {
         ...recipeData,
-        favorite: [''],
+        favorite: [""],
         creator: currentUser["id"],
       })
       .subscribe((response) => {
@@ -101,17 +97,16 @@ export class RecipeService {
   }
 
   getRecipe(id: string) {
-  
     return this.http
       .get("https://thetastyplace-6a02c.firebaseio.com/recipes.json")
       .pipe(
         map((resData) => {
           const fetchedRecipes: Recipe[] = [];
-          
+
           for (const key in resData) {
             fetchedRecipes.push({ ...resData[key], id: key });
-            for(let el of fetchedRecipes) {
-              if(el['id']===id){
+            for (let el of fetchedRecipes) {
+              if (el["id"] === id) {
                 this.selectedRecipe = el;
               }
             }
@@ -120,7 +115,6 @@ export class RecipeService {
         })
       );
   }
-  
 
   updateRecipe(id: string, newRecipe: Recipe) {
     //done
@@ -132,16 +126,15 @@ export class RecipeService {
       .subscribe();
   }
 
-    checkIfiSFavorite(favorites){
-      let currentUser = JSON.parse(localStorage.getItem("userInfo"));
-      let userId = currentUser["id"];
-      if(favorites.includes(userId)){
-        return true;
-      }
-           else {
-          return false;
-        }
-       }
+  checkIfiSFavorite(favorites) {
+    let currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    let userId = currentUser["id"];
+    if (favorites.includes(userId)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   updateFavorite(id: string) {
     let currentUser = JSON.parse(localStorage.getItem("userInfo"));
@@ -154,7 +147,6 @@ export class RecipeService {
           for (let i = 0; i <= this.favorites.length; i++) {
             if (this.favorites[i] === userId) {
               this.favorites.splice(i, 1);
-              console.log('favorites ' + this.favorites)
             }
           }
         } else {
@@ -163,7 +155,7 @@ export class RecipeService {
         this.http
           .patch(
             `https://thetastyplace-6a02c.firebaseio.com/recipes/${id}/.json`,
-            { 'favorite': this.favorites }
+            { favorite: this.favorites }
           )
           .subscribe();
       });

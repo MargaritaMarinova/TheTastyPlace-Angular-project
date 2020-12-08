@@ -29,6 +29,7 @@ import { SelectRecipeTextComponent} from './recipes/my-recipes-list/select-recip
 import { BackButtonComponent } from './recipes/back-button/back-button.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +52,8 @@ import { BackButtonComponent } from './recipes/back-button/back-button.component
     MyRecipesListComponent,
     FavRecipesListComponent,
     SelectRecipeTextComponent,
-    BackButtonComponent
-  ],
+    BackButtonComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

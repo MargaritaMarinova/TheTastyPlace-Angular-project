@@ -13,6 +13,7 @@ export class RecipesListComponent implements OnInit, OnDestroy {
   filteredRecipes: Recipe[];
   subscription: Subscription;
   isLoading = false;
+  isFavorite: boolean;
 
   constructor(
     private recipeService: RecipeService,
@@ -22,19 +23,21 @@ export class RecipesListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.subscription = this.recipeService.recipesChanged
-      .subscribe(
-        (recipes: Recipe[]) => {
-          this.filteredRecipes = recipes;
-        }
-      );
-    
-    this.recipeService.getRecipes()
-    .subscribe(resData=>{
+    this.subscription = this.recipeService.recipesChanged.subscribe(
+      (recipes: Recipe[]) => {
+        this.filteredRecipes = recipes;
+      }
+    );
+
+    this.recipeService.getRecipes().subscribe((resData) => {
       this.filteredRecipes = resData;
+
       this.isLoading = false;
     });
-    
+  }
+
+  onCheck(favorites) {
+    this.isFavorite = this.recipeService.checkIfiSFavorite(favorites);
   }
 
   onSelectCat(cat: string) {
@@ -46,8 +49,6 @@ export class RecipesListComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
   onNewRecipe() {
     this.router.navigate(["create"], { relativeTo: this.route });
   }
@@ -56,6 +57,3 @@ export class RecipesListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 }
-
-
-

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { RecipeService } from '../../recipes.service';
-
-
+import { ActivatedRoute} from "@angular/router";
+import { RecipeService } from "../../recipes.service";
 
 @Component({
   selector: "app-recipe-item",
@@ -10,23 +9,42 @@ import { RecipeService } from '../../recipes.service';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe;
+  id: string;
   isLoading = false;
-  isFavorite: any;
+  favorites = this.recipeService.favorites;
+  @Input() isFavorite: boolean;
   isCreator: boolean;
-  isShowingDetails=false;
+  isShowingDetails = false;
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute
+  ) {}
 
   onDetails(id: string) {
     this.isLoading = true;
     this.recipeService.getRecipe(id).subscribe((resData) => {
-      console.log(resData)
       this.recipe = resData;
-      
       this.isLoading = false;
       this.isShowingDetails = true;
     });
   }
 
-  ngOnInit() {}
+  onChangeFav(id: string) {
+    this.isLoading = true;
+    this.recipeService.getRecipe(id).subscribe((resData) => {
+      this.isFavorite = this.recipeService.checkIfiSFavorite(
+        resData["favorite"]
+      );
+      this.isFavorite = !this.isFavorite;
+      this.recipeService.updateFavorite(id);
+      this.isLoading = false;
+    });
+  }
+
+  ngOnInit() {
+    this.isFavorite = this.recipeService.checkIfiSFavorite(
+      this.recipe["favorite"]
+    );
+  }
 }
