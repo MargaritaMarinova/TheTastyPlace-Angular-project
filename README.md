@@ -3,6 +3,7 @@
 
 (Exam project) 
 The Tasty PLace is an app where every user can create, edit and delete his own recipes, view others and make personal Favorites List
+![tasty-place-recipes](src/assets/intro-image-recipes.jpg)
 
 ## Install
 
