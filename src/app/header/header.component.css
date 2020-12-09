@@ -14,11 +14,18 @@ nav ul li {
 .logo-wrapper {
     max-width:100px;
     padding: 0 20px;
+    border: none;
+    cursor: pointer;
     
+}
+
+.logo-wrapper:click {
+    border: 1 px solid lightgray;
 }
 
 .logo-wrapper img {
     width: 100%;
+    
 }
 
 

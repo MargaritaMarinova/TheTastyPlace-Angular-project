@@ -9,9 +9,9 @@
     text-decoration: none;
 }
 
-img {
-    
-    width: 70%;
-    height: 70%;
-    margin: -60px auto;
+.image-container {
+    max-width: 410px;
+    margin: 10px auto;
+    align-content: center;
 }
+
