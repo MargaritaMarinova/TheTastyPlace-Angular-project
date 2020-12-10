@@ -19,13 +19,27 @@ nav ul li {
     
 }
 
-.logo-wrapper:click {
-    border: 1 px solid lightgray;
-}
+
 
 .logo-wrapper img {
     width: 100%;
     
+}
+
+@media all and (max-width: 580px) {
+    nav {
+        max-width: 570px;
+        display: flex;
+        justify-content: flex start;
+        background-color: green;
+        
+    }
+
+    nav ul{
+        display: flex;
+        justify-content: flex start;
+
+    }
 }
 
 

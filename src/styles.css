@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.9)), url('./assets/cooking.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    background-position: top;
+    top: -85px;
+}
