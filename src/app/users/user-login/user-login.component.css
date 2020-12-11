@@ -1,0 +1,51 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
+
+.content-wrapper {
+    background-color: white;
+    width: 40%;
+    margin: 5rem auto;
+    padding: 10rem 5rem;
+    border-radius: 10px;
+    box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.36);
+}
+
+input {
+    background: #f0fcf9;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+    padding: .5rem 0.5rem 0.5rem 3.5rem;
+    font-size: 15px;
+    border:1px solid lightgray;
+    margin-bottom: 3rem;
+    margin-top: .5rem;
+    outline: none;
+    }
+
+
+form p {
+    position: relative;
+}
+
+form p:before {
+    display: block;
+    position: absolute;
+    font-family: "Font Awesome\ 5 Free";
+    top: 7px;
+    left: 14px;
+    font-weight: 900;
+    color:#AAAAAA;
+}
+
+.email:before{
+    content:'\f0e0';
+}
+
+.password:before{
+    content:'\f13e';
+}
+
+form p:focus-within:before {
+    color: #38AA32;
+}
