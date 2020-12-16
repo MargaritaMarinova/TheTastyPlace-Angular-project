@@ -1,3 +1,10 @@
+.main-container {
+    background: white;
+    width: 90%;
+    margin: 2rem auto;
+    border-radius: 5px;
+}
+
 .intro-text {
     width: 100%;
     text-align: center;
@@ -15,3 +22,53 @@
     align-content: center;
 }
 
+.categories {
+    height: 400px;
+    width: 100%;
+    background: url('../../assets/categories-background.jpg') center center;
+    padding: 2rem;
+    margin-top: 12rem;
+    padding-top: .6rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.categories ul {
+    display: flex;
+    width: 100%;
+    margin: 30px auto;
+    justify-content: space-between;
+    padding-left:0;
+}
+
+.categories ul li {
+    background: gainsboro;
+    opacity: 0.9;
+    width: 24%;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 9px 9px 9px -8px rgba(0,0,0,0.37);
+}
+
+.categories ul li h3 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 35px;
+    color: white;
+    text-shadow:4px 2px grey;
+}
+
+.categories ul li img {
+    height: 230px;
+    max-width: 100%;
+    object-fit: cover;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+li {
+    list-style: none;
+}
