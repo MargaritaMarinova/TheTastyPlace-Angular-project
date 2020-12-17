@@ -14,6 +14,7 @@ export class RecipesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isLoading = false;
   isFavorite: boolean;
+  public p: number = 1;
 
   constructor(
     private recipeService: RecipeService,

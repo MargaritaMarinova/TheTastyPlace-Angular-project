@@ -5,3 +5,8 @@ body {
     background-position: top;
     top: -85px;
 }
+
+.npx-pagination .current {
+    background-color: green;
+}
+

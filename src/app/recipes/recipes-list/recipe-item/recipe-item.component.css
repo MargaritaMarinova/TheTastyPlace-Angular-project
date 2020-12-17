@@ -1,70 +1,100 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
 
-
-
 .recipe-card {
-    margin-bottom: 10px;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    box-shadow: 3px 2px 5px 1px rgba(0,0,0,0.38);
-    background-color: white;
-    z-index: 1;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.38);
+  background-color: white;
+  z-index: 1;
 }
 
+.module {
+  width: 425px;
+  margin: 0 0 1em 0;
+  overflow: hidden;
+  font-size: 17.5px;
+  --lh: 3.2rem;
+  height: 97px;
+}
+.module p {
+  margin: 0;
+}
+
+.overflow {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1.5rem;
+}
+.overflow span::before {
+  position: absolute;
+  content: " ...";
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  bottom: -5px;
+  right: 0;
+}
+.overflow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  background: white;
+}
 
 .recipe-image-and-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .image-container {
-    border-radius: 5px;
-    height: 150px;
-    min-height: 100px;
-    max-width: 220px;
-    margin-bottom: 25px;
+  border-radius: 5px;
+  height: 150px;
+  min-height: 100px;
+  width: 205px;
+  margin-bottom: 25px;
+  
 }
 
 .image-container img {
-    border: 1px solid #38AA32;
-    border-radius: 5px;
+  height: 145px;
+  width: 205px;
+  object-fit: cover;
+  border: 1px solid #38aa32;
+  border-radius: 5px;
 }
 
-
-
 .recipe-details-link {
-    border: 2px solid #38AA32;
-    color: white;
-    background-color: #38AA32;
-    border-radius: 3px;
-    padding: 5% 29%;
-    width: 50px;
-    margin-top: 12px;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: 'Helvetica', sans-serif;
-    font-size: 18px;
+  border: 2px solid #38aa32;
+  color: white;
+  background-color: #38aa32;
+  border-radius: 3px;
+  padding: 5% 29%;
+  width: 50px;
+  margin-top: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Helvetica", sans-serif;
+  font-size: 18px;
 }
 
 .category-text {
-    text-transform: uppercase;
-    font-family: 'Helvetica', sans-serif;
-    color: #38AA32;
-    margin-top: 20px;
-    border-top: 1px solid lightgrey;
-    padding-top: 20px;
-    padding: 15px;
-}
-
-.desc-area {
-    height: 90px;
+  text-transform: uppercase;
+  font-family: "Helvetica", sans-serif;
+  color: #38aa32;
+  margin-top: 20px;
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
+  padding: 15px;
 }
 
 .heart {
-    background-color: white;
-    border: none
+  background-color: white;
+  border: none;
 }
-

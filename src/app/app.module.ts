@@ -27,7 +27,7 @@ import { MyRecipesListComponent } from './recipes/my-recipes-list/my-recipes-lis
 import { FavRecipesListComponent } from './recipes/fav-recipes-list/fav-recipes-list.component';
 import { SelectRecipeTextComponent} from './recipes/my-recipes-list/select-recipe-text/select-recipe-text.component'
 import { BackButtonComponent } from './recipes/back-button/back-button.component';
-
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -59,7 +59,8 @@ import { BackButtonComponent } from './recipes/back-button/back-button.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [RecipeService, {provide: HTTP_INTERCEPTORS, useClass: UserInterceptorService, multi: true}],
   bootstrap: [AppComponent]

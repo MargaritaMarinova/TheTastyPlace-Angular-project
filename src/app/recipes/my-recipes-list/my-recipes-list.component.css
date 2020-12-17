@@ -1,6 +1,6 @@
 .container-wrapper {
-    width: 90%;
-    margin: 30px auto;
+    width: 88%;
+    margin: 0 auto;
 }
 
 h3 {
@@ -12,11 +12,7 @@ h3 {
     text-align: center;
     font-family: 'Helvetica', sans-serif;
     opacity: 70%;
-    /*position: fixed;
-    margin-top: -20px;*/
 }
-
-
 
 .recipe-start {
     width: 50%;

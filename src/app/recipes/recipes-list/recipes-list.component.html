@@ -20,7 +20,11 @@
 
 <div class="row" *ngIf="!isLoading">
     <div class="recipes-container">
-        <app-recipe-item class="recipe-template" *ngFor="let recipeEl of filteredRecipes" [recipe]="recipeEl">
+        <app-recipe-item class="recipe-template"
+            *ngFor="let recipeEl of filteredRecipes | paginate: { itemsPerPage: 6, currentPage: p }"
+            [recipe]="recipeEl">
         </app-recipe-item>
     </div>
+    <pagination-controls style="text-align: center; width: 20%; margin:0 auto; margin-bottom: 10px; margin-top: 7rem;"
+        (pageChange)="p = $event"></pagination-controls>
 </div>

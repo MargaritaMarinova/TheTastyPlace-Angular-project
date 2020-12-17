@@ -10,6 +10,7 @@ import { RecipeService } from "../recipes.service";
 export class FavRecipesListComponent implements OnInit {
   @Output() filteredRecipes: Recipe[] = [];
   @Output() isLoading: boolean;
+  public p = 1;
 
   constructor(private recipeService: RecipeService) {}
 
